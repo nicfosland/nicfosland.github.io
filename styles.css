@@ -30,11 +30,30 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
     transition: var(--transition);
+}
+
+/* Add specific styling for headings to maintain balance */
+h1, h2, h3, .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+}
+
+.nav-links {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+}
+
+/* Enhance code-like elements */
+.skill-category li, 
+.project-card p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95em;
+    letter-spacing: -0.02em;
 }
 
 /* Navbar */
@@ -285,4 +304,28 @@ footer {
     .project-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* Resume Section */
+.resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resume-container {
+    width: 100%;
+    max-width: 850px;
+    height: 1100px;
+    margin: 2rem auto;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.resume-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
 } 

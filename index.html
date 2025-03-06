@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
@@ -14,8 +15,10 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
+            <a href="#skills">Skills</a>  
+            <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
         </div>
         <button id="theme-toggle">
@@ -25,7 +28,7 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
+            <h1>Hi, I'm <span class="highlight">Nicolas Fosland</span></h1>
             <h2>App Developer</h2>
             <p>Creating innovative mobile and web applications</p>
             <div class="cta-buttons">
@@ -41,12 +44,15 @@
             <div class="about-text">
                 <p>I'm a passionate app developer with expertise in creating user-friendly and efficient applications. With a strong foundation in both front-end and back-end development, I focus on delivering high-quality solutions that solve real-world problems.</p>
                 <div class="social-links">
-                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/nicfosland" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/nicolas-fosland" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <h2>Work Experience</h2>
     </section>
 
     <section id="projects" class="projects">
@@ -91,28 +97,40 @@
                     <li>HTML5 & CSS3</li>
                     <li>JavaScript (ES6+)</li>
                     <li>React Native</li>
-                    <li>Flutter</li>
                 </ul>
             </div>
             <div class="skill-category">
                 <h3>Backend</h3>
                 <ul>
+                    <li>C#</li>
+                    <li>ASP.NET</li>
+                    <li>Java</li>
+                    <li>Entity Framework</li>
+                    <li>SQL Server</li>
                     <li>Node.js</li>
                     <li>Python</li>
                     <li>Firebase</li>
-                    <li>MongoDB</li>
                 </ul>
             </div>
             <div class="skill-category">
                 <h3>Tools & Others</h3>
                 <ul>
+                    <li>Azure DevOps</li>
                     <li>Git & GitHub</li>
-                    <li>Docker</li>
-                    <li>AWS</li>
                     <li>Agile/Scrum</li>
                 </ul>
             </div>
         </div>
+    </section>
+
+    <section id="resume" class="resume">
+        <h2>Resume</h2>
+        <div class="resume-container">
+            <iframe class="resume-frame" src="/nicfosland-resume.pdf&embedded=true" frameborder="0"></iframe>
+        </div>
+        <a href="/nicfosland-resume.pdf" target="_blank" class="btn primary" style="margin-top: 1rem;">
+            <i class="fas fa-download"></i> Download Resume
+        </a>
     </section>
 
     <section id="contact" class="contact">
@@ -134,7 +152,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Nicolas Fosland. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
