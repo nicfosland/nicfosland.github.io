@@ -1,3 +1,8 @@
+(function () {
+    emailjs.init("VA4S-2IG-U5CczdSV");
+})();
+
+
 // Dark mode toggle
 const themeToggle = document.getElementById('theme-toggle');
 const icon = themeToggle.querySelector('i');
@@ -12,7 +17,7 @@ if (savedTheme) {
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
+
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateIcon(newTheme);
@@ -39,16 +44,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        // For now, we'll just show a success message
-        alert('Thank you for your message! I will get back to you soon.');
+
+        emailjs.sendForm('service_dju56d4', 'template_a7eojha', this).then(() => {
+            Swal.fire({
+                icon: "success",
+                text: "Thank you for your message! I will get back to you soon.",
+                timer: 3000,
+                showConfirmButton: false,
+                timerProgressBar: true
+            })
+        })
+
         this.reset();
     });
 }
