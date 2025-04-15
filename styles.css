@@ -313,16 +313,31 @@ footer {
     align-items: center;
 }
 
+
+    .resume-container {
+        width: 100%;
+        max-width: 850px;
+        height: 55vh;
+        margin: 2rem auto;
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+    }
+
+@media only screen and (min-height:950px){
 .resume-container {
-    width: 100%;
+    width: 90%;
     max-width: 850px;
-    height: 1100px;
+    height: 90vh;
     margin: 2rem auto;
     background-color: var(--card-bg);
     border-radius: 10px;
     box-shadow: var(--shadow);
     overflow: hidden;
 }
+}
+
 
 .resume-frame {
     width: 100%;
