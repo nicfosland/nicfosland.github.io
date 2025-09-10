@@ -104,4 +104,35 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all sections
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
+});
+
+// Scroll arrow functionality
+const scrollArrow = document.getElementById('scroll-arrow');
+if (scrollArrow) {
+    scrollArrow.addEventListener('click', () => {
+        const nextSection = document.getElementById('our-services');
+        if (nextSection) {
+            nextSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+}
+
+// Hide scroll arrow when user scrolls down
+window.addEventListener('scroll', () => {
+    if (scrollArrow) {
+        const heroSection = document.querySelector('.hero');
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const scrollPosition = window.pageYOffset + window.innerHeight;
+        
+        if (scrollPosition > heroBottom) {
+            scrollArrow.style.opacity = '0';
+            scrollArrow.style.pointerEvents = 'none';
+        } else {
+            scrollArrow.style.opacity = '1';
+            scrollArrow.style.pointerEvents = 'auto';
+        }
+    }
 }); 
