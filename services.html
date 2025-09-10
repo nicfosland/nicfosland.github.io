@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Services</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .flyer {
+            width: 8.5in;
+            height: 11in;
+            background: #ffffff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect width="11" height="11" x="10" y="10" fill="url(%23a)" rx="2"/><rect width="11" height="11" x="35" y="40" fill="url(%23a)" rx="2"/><rect width="11" height="11" x="60" y="10" fill="url(%23a)" rx="2"/><rect width="11" height="11" x="85" y="30" fill="url(%23a)" rx="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header .tagline {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        
+        .services {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .services h2 {
+            color: #333;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .services h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .service-item {
+            background: #f8faff;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        }
+        
+        .service-item h3 {
+            color: #333;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-item p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .sidebar {
+            background: linear-gradient(180deg, #f8faff 0%, #eef2ff 100%);
+            border-radius: 12px;
+            padding: 30px;
+            height: fit-content;
+        }
+        
+        .why-choose {
+            margin-bottom: 35px;
+        }
+        
+        .why-choose h3 {
+            color: #333;
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #555;
+        }
+        
+        .check {
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        
+        .contact-section {
+            background: #333;
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        
+        .contact-info div {
+            margin-bottom: 8px;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 0.9em;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .flyer {
+                box-shadow: none;
+                width: 100%;
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer">
+        <div class="header">
+            <h1>Professional Web Solutions</h1>
+            <div class="tagline">Transforming Ideas into Digital Excellence</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="services">
+                <h2>Our Services</h2>
+                
+                <div class="service-item">
+                    <h3><span class="icon">⚡</span>Web App Creation</h3>
+                    <p>Custom web applications built with modern technologies. From concept to deployment, we create scalable, responsive, and user-friendly applications tailored to your business needs. Full-stack development with the latest frameworks and best practices.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><span class="icon">🔧</span>Software Maintenance</h3>
+                    <p>Keep your applications running smoothly with our comprehensive maintenance services. Regular updates, security patches, performance optimization, and feature enhancements to ensure your software stays current and competitive.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h3><span class="icon">🐛</span>Software Debugging</h3>
+                    <p>Expert troubleshooting and bug resolution services. We identify, analyze, and fix complex software issues quickly and efficiently. Code review, performance bottleneck identification, and optimization for better user experience.</p>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="why-choose">
+                    <h3>Why Partner With Us?</h3>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Proven track record of successful projects</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Fast turnaround times</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Modern, scalable technologies</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Competitive pricing</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>24/7 support available</span>
+                    </div>
+                    <div class="benefit">
+                        <span class="check">✓</span>
+                        <span>Clear communication & updates</span>
+                    </div>
+                </div>
+                
+                <div class="contact-section">
+                    <h3>Let's Connect</h3>
+                    <div class="contact-info">
+                        <div>📧 your.email@domain.com</div>
+                        <div>📱 (555) 123-4567</div>
+                        <div>🌐 yourwebsite.com</div>
+                        <div>📍 Your City, State</div>
+                    </div>
+                    <a href="#" class="cta">Start Your Project</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Ready to take your business to the next level? Let's build something <span class="highlight">amazing</span> together!
+        </div>
+    </div>
+</body>
+</html>
