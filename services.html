@@ -1,333 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Services</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .flyer {
-            width: 8.5in;
-            height: 11in;
-            background: #ffffff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="40%" r="50%"><stop offset="0%" stop-color="rgba(255,255,255,.1)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect width="11" height="11" x="10" y="10" fill="url(%23a)" rx="2"/><rect width="11" height="11" x="35" y="40" fill="url(%23a)" rx="2"/><rect width="11" height="11" x="60" y="10" fill="url(%23a)" rx="2"/><rect width="11" height="11" x="85" y="30" fill="url(%23a)" rx="2"/></svg>');
-            opacity: 0.3;
-        }
-        
-        .header h1 {
-            font-size: 2.5em;
-            font-weight: 800;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .header .tagline {
-            font-size: 1.2em;
-            font-weight: 300;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .main-content {
-            flex: 1;
-            padding: 40px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 40px;
-        }
-        
-        .services {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-        
-        .services h2 {
-            color: #333;
-            font-size: 1.8em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .services h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            border-radius: 2px;
-        }
-        
-        .service-item {
-            background: #f8faff;
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .service-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-        }
-        
-        .service-item h3 {
-            color: #333;
-            font-size: 1.3em;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .service-item p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 0.95em;
-        }
-        
-        .icon {
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        
-        .sidebar {
-            background: linear-gradient(180deg, #f8faff 0%, #eef2ff 100%);
-            border-radius: 12px;
-            padding: 30px;
-            height: fit-content;
-        }
-        
-        .why-choose {
-            margin-bottom: 35px;
-        }
-        
-        .why-choose h3 {
-            color: #333;
-            font-size: 1.4em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .benefit {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-            color: #555;
-        }
-        
-        .check {
-            width: 20px;
-            height: 20px;
-            background: #10b981;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 12px;
-            flex-shrink: 0;
-        }
-        
-        .contact-section {
-            background: #333;
-            color: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        
-        .contact-section h3 {
-            font-size: 1.3em;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .contact-info {
-            font-size: 0.95em;
-            line-height: 1.8;
-        }
-        
-        .contact-info div {
-            margin-bottom: 8px;
-        }
-        
-        .cta {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1em;
-            margin-top: 20px;
-            display: inline-block;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-        }
-        
-        .footer {
-            background: #1f2937;
-            color: white;
-            text-align: center;
-            padding: 20px 40px;
-            font-size: 0.9em;
-        }
-        
-        .highlight {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-        }
-        
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .flyer {
-                box-shadow: none;
-                width: 100%;
-                height: 100vh;
-            }
-        }
-    </style>
+    <title>Web Development Services - Nicolas Fosland</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 <body>
-    <div class="flyer">
-        <div class="header">
-            <h1>Professional Web Solutions</h1>
-            <div class="tagline">Transforming Ideas into Digital Excellence</div>
+    <nav class="navbar">
+        <div class="logo">Nicolas Fosland</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="services.html">Services</a>
+            <a href="index.html#contact">Contact</a>
         </div>
-        
-        <div class="main-content">
-            <div class="services">
-                <h2>Our Services</h2>
-                
-                <div class="service-item">
-                    <h3><span class="icon">⚡</span>Web App Creation</h3>
-                    <p>Custom web applications built with modern technologies. From concept to deployment, we create scalable, responsive, and user-friendly applications tailored to your business needs. Full-stack development with the latest frameworks and best practices.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3><span class="icon">🔧</span>Software Maintenance</h3>
-                    <p>Keep your applications running smoothly with our comprehensive maintenance services. Regular updates, security patches, performance optimization, and feature enhancements to ensure your software stays current and competitive.</p>
-                </div>
-                
-                <div class="service-item">
-                    <h3><span class="icon">🐛</span>Software Debugging</h3>
-                    <p>Expert troubleshooting and bug resolution services. We identify, analyze, and fix complex software issues quickly and efficiently. Code review, performance bottleneck identification, and optimization for better user experience.</p>
-                </div>
+        <button id="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <section id="services" class="hero">
+        <div class="hero-content">
+            <h1>Professional <span class="highlight">Web Solutions</span></h1>
+            <h2>Transforming Ideas into Digital Excellence</h2>
+            <p>Custom web applications and software solutions tailored to your business needs</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn primary">Get Started</a>
+                <a href="index.html#projects" class="btn secondary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-services" class="projects">
+        <h2>Our Services</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3><i class="fas fa-bolt" style="color: var(--primary-color); margin-right: 10px;"></i>Web App Creation</h3>
+                <p>Custom web applications built with modern technologies. From concept to deployment, we create scalable, responsive, and user-friendly applications tailored to your business needs. Full-stack development with the latest frameworks and best practices.</p>
             </div>
             
-            <div class="sidebar">
-                <div class="why-choose">
-                    <h3>Why Partner With Us?</h3>
-                    <div class="benefit">
-                        <span class="check">✓</span>
-                        <span>Proven track record of successful projects</span>
-                    </div>
-                    <div class="benefit">
-                        <span class="check">✓</span>
-                        <span>Fast turnaround times</span>
-                    </div>
-                    <div class="benefit">
-                        <span class="check">✓</span>
-                        <span>Modern, scalable technologies</span>
-                    </div>
-                    <div class="benefit">
-                        <span class="check">✓</span>
-                        <span>Competitive pricing</span>
-                    </div>
-                    <div class="benefit">
-                        <span class="check">✓</span>
-                        <span>24/7 support available</span>
-                    </div>
-                    <div class="benefit">
-                        <span class="check">✓</span>
-                        <span>Clear communication & updates</span>
-                    </div>
-                </div>
-                
-                <div class="contact-section">
-                    <h3>Let's Connect</h3>
-                    <div class="contact-info">
-                        <div>📧 your.email@domain.com</div>
-                        <div>📱 (555) 123-4567</div>
-                        <div>🌐 yourwebsite.com</div>
-                        <div>📍 Your City, State</div>
-                    </div>
-                    <a href="#" class="cta">Start Your Project</a>
-                </div>
+            <div class="project-card">
+                <h3><i class="fas fa-tools" style="color: var(--primary-color); margin-right: 10px;"></i>Software Maintenance</h3>
+                <p>Keep your applications running smoothly with our comprehensive maintenance services. Regular updates, security patches, performance optimization, and feature enhancements to ensure your software stays current and competitive.</p>
+            </div>
+            
+            <div class="project-card">
+                <h3><i class="fas fa-bug" style="color: var(--primary-color); margin-right: 10px;"></i>Software Debugging</h3>
+                <p>Expert troubleshooting and bug resolution services. We identify, analyze, and fix complex software issues quickly and efficiently. Code review, performance bottleneck identification, and optimization for better user experience.</p>
             </div>
         </div>
-        
-        <div class="footer">
-            Ready to take your business to the next level? Let's build something <span class="highlight">amazing</span> together!
+    </section>
+
+    <section id="why-choose" class="skills">
+        <h2>Why Partner With Us?</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-check-circle" style="color: #10b981; margin-right: 10px;"></i>Proven Track Record</h3>
+                <p>Successfully delivered multiple web applications for St. Louis County, MN, and now working with web app development at Essentia Health, with applications still running in production today.</p>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-clock" style="color: #10b981; margin-right: 10px;"></i>Fast Turnaround</h3>
+                <p>Efficient development process with clear communication and regular updates to ensure timely project delivery.</p>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-code" style="color: #10b981; margin-right: 10px;"></i>Modern Technologies</h3>
+                <p>Using the latest frameworks and best practices including Next.js, React, ASP.NET MVC, C#, SQL Server, and modern frontend technologies.</p>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-headset" style="color: #10b981; margin-right: 10px;"></i>Ongoing Support</h3>
+                <p>Comprehensive maintenance and support services to keep your applications running smoothly and securely.</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Let's Connect</h2>
+        <div class="contact-content">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">Ready to take your business to the next level?</p>
+                <p style="margin-bottom: 2rem;">Let's build something <span class="highlight">amazing</span> together!</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                    <div style="text-align: center;">
+                        <i class="fas fa-envelope" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p>Email</p>
+                        <p style="font-family: 'JetBrains Mono', monospace;">ntfosland@gmail.com</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fab fa-linkedin" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p>LinkedIn</p>
+                        <p style="font-family: 'JetBrains Mono', monospace;">linkedin.com/in/nicolas-fosland</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fab fa-github" style="color: var(--primary-color); font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+                        <p>GitHub</p>
+                        <p style="font-family: 'JetBrains Mono', monospace;">github.com/nicfosland</p>
+                    </div>
+                </div>
+            </div>
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Nicolas Fosland. All rights reserved.</p>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
 </body>
 </html>
