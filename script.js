@@ -135,4 +135,149 @@ window.addEventListener('scroll', () => {
             scrollArrow.style.pointerEvents = 'auto';
         }
     }
-}); 
+});
+
+// Share Modal Functionality
+const shareButton = document.getElementById('share-button');
+const shareModal = document.getElementById('share-modal');
+const modalClose = document.getElementById('modal-close');
+const copyButton = document.getElementById('copy-button');
+const shareLink = document.getElementById('share-link');
+const copyFeedback = document.getElementById('copy-feedback');
+const qrCodeContainer = document.getElementById('qr-code');
+
+// Open modal when share button is clicked
+if (shareButton) {
+    shareButton.addEventListener('click', () => {
+        // Update the share link input with the current page URL
+        const currentPage = window.location.pathname;
+        const url = currentPage.includes('services.html') ? 'http://nicfosland.com/services.html' : 'http://nicfosland.com';
+        shareLink.value = url;
+        
+        shareModal.classList.add('show');
+        generateQRCode();
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
+}
+
+// Close modal when close button is clicked
+if (modalClose) {
+    modalClose.addEventListener('click', () => {
+        closeModal();
+    });
+}
+
+// Close modal when clicking outside of it
+if (shareModal) {
+    shareModal.addEventListener('click', (e) => {
+        if (e.target === shareModal) {
+            closeModal();
+        }
+    });
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && shareModal.classList.contains('show')) {
+        closeModal();
+    }
+});
+
+// Copy link functionality
+if (copyButton) {
+    copyButton.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(shareLink.value);
+            showCopyFeedback('Link copied to clipboard!');
+        } catch (err) {
+            // Fallback for older browsers
+            shareLink.select();
+            document.execCommand('copy');
+            showCopyFeedback('Link copied to clipboard!');
+        }
+    });
+}
+
+// Generate QR Code
+function generateQRCode() {
+    // Determine the URL based on the current page
+    const currentPage = window.location.pathname;
+    const url = currentPage.includes('services.html') ? 'http://nicfosland.com/services.html' : 'http://nicfosland.com';
+    
+    // Clear previous QR code
+    qrCodeContainer.innerHTML = '';
+    
+    // Check if QRCode library is available
+    if (typeof QRCode === 'undefined') {
+        console.error('QRCode library not loaded, using fallback');
+        generateQRCodeFallback(url);
+        return;
+    }
+    
+    // Generate new QR code using the library
+    QRCode.toCanvas(qrCodeContainer, url, {
+        width: 180,
+        height: 180,
+        color: {
+            dark: '#000000',
+            light: '#FFFFFF'
+        },
+        margin: 2,
+        errorCorrectionLevel: 'M'
+    }, function (error) {
+        if (error) {
+            console.error('QR Code generation error:', error);
+            generateQRCodeFallback(url);
+        } else {
+            console.log('QR Code generated successfully');
+            // Add margin around the generated QR code
+            const canvas = qrCodeContainer.querySelector('canvas');
+            if (canvas) {
+                canvas.style.margin = '10px';
+                canvas.style.maxWidth = '100%';
+                canvas.style.height = 'auto';
+            }
+        }
+    });
+}
+
+// Fallback QR code generation using API
+function generateQRCodeFallback(url) {
+    const encodedUrl = encodeURIComponent(url);
+    const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodedUrl}`;
+    
+    const img = document.createElement('img');
+    img.src = qrApiUrl;
+    img.alt = 'QR Code';
+    img.style.maxWidth = '100%';
+    img.style.height = 'auto';
+    img.style.borderRadius = '8px';
+    img.style.margin = '10px';
+    img.style.display = 'block';
+    
+    img.onload = function() {
+        console.log('Fallback QR Code loaded successfully');
+    };
+    
+    img.onerror = function() {
+        qrCodeContainer.innerHTML = '<p style="color: red; text-align: center; padding: 2rem;">Unable to generate QR code. Please try again later.</p>';
+    };
+    
+    qrCodeContainer.appendChild(img);
+}
+
+// Show copy feedback
+function showCopyFeedback(message) {
+    copyFeedback.textContent = message;
+    copyFeedback.classList.add('show');
+    
+    setTimeout(() => {
+        copyFeedback.classList.remove('show');
+    }, 2000);
+}
+
+// Close modal function
+function closeModal() {
+    shareModal.classList.remove('show');
+    document.body.style.overflow = 'auto'; // Restore background scrolling
+} 

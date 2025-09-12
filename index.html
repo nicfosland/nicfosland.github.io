@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicolas Fosland Portfolio</title>
+    <title>Portfolio - Nic Fosland</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -15,7 +15,7 @@
 
 <body>
     <nav class="navbar">
-        <div class="logo">Nicolas Fosland</div>
+        <div class="logo">Nic Fosland</div>
         <div class="nav-links" id="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -26,6 +26,9 @@
             <a href="#contact">Contact</a>
         </div>
         <div class="nav-controls">
+            <button id="share-button" class="share-btn">
+                <i class="fas fa-share-alt"></i>
+            </button>
             <button id="theme-toggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -39,7 +42,7 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Nicolas Fosland</span></h1>
+            <h1>Hi, I'm <span class="highlight">Nic Fosland</span></h1>
             <h2>Software Developer</h2>
             <p>Creating innovative mobile and web applications</p>
             <div class="cta-buttons">
@@ -66,12 +69,12 @@
     </section>
 
     <section id="experience" class="experience">
-        <div style="display:flex; justify-content: center; position:relative;">
-        <h2>Work Experience</h2>
-        <a href="https://www.icloud.com/iclouddrive/06cd4LV91IR0qV1C0QZ5HV-BQ#Nicolas_Fosland_Resume" target="_blank"
-        class="btn primary" style="margin-top: 1rem; position:absolute; right: 0;">
-        <i class="fas fa-download"></i> Download Resume
-    </a>
+        <div class="experience-header">
+            <h2>Work Experience</h2>
+            <a href="https://www.icloud.com/iclouddrive/06cd4LV91IR0qV1C0QZ5HV-BQ#Nicolas_Fosland_Resume" target="_blank"
+            class="btn primary download-resume-btn">
+            <i class="fas fa-download"></i> Download Resume
+        </a>
         </div>
         <div class="experience-grid">
             <div class="experience-card">
@@ -278,22 +281,14 @@
             </div>
         </div>
     </section>
-
- 
-
-    <!-- <section id="resume" class="resume">
-        <h2>Resume</h2>
-        <div class="resume-container">
-            <iframe class="resume-frame"
-                src="https://docs.google.com/viewer?url=https://nicfosland.github.io/nicfosland-resume.pdf&embedded=true"
-                frameborder="0"></iframe>
+    
+    <section id="services-cta" class="services-cta">
+        <div class="services-cta-content">
+            <h2>Ready to Work Together?</h2>
+            <p>I offer professional web development services including custom web applications, software maintenance, and debugging solutions.</p>
+            <a href="services.html" class="btn primary">View My Services</a>
         </div>
-        <a href="https://www.icloud.com/iclouddrive/06cd4LV91IR0qV1C0QZ5HV-BQ#Nicolas_Fosland_Resume" target="_blank"
-            class="btn primary" style="margin-top: 1rem;">
-            <i class="fas fa-download"></i> Download Resume
-        </a>
-    </section> -->
-
+    </section>
 
     <section id="contact" class="contact">
         <h2>Get In Touch</h2>
@@ -314,15 +309,51 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Nicolas Fosland. All rights reserved.</p>
+        <p>&copy; 2025 Nic Fosland. All rights reserved.</p>
     </footer>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share This Page</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="qr-section">
+                    <h4>Scan QR Code</h4>
+                    <div id="qr-code" class="qr-code-container"></div>
+                </div>
+                <div class="link-section">
+                    <h4>Copy Link</h4>
+                    <div class="link-input-container">
+                        <input type="text" id="share-link" value="http://nicfosland.com" readonly>
+                        <button id="copy-button" class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div id="copy-feedback" class="copy-feedback"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        // Fallback QR code generation if library fails to load
+        window.addEventListener('load', function() {
+            if (typeof QRCode === 'undefined') {
+                console.warn('QRCode library failed to load, using fallback');
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Services - Nicolas Fosland</title>
+    <title>Web Development Services - Nic Fosland</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -14,7 +14,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">Nicolas Fosland</div>
+        <div class="logo">Nic Fosland</div>
         <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
             <a href="index.html#about">About</a>
@@ -25,6 +25,9 @@
             <a href="index.html#contact">Contact</a>
         </div>
         <div class="nav-controls">
+            <button id="share-button" class="share-btn">
+                <i class="fas fa-share-alt"></i>
+            </button>
             <button id="theme-toggle">
                 <i class="fas fa-moon"></i>
             </button>
@@ -133,14 +136,51 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Nicolas Fosland. All rights reserved.</p>
+        <p>&copy; 2025 Nic Fosland. All rights reserved.</p>
     </footer>
+
+    <!-- Share Modal -->
+    <div id="share-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Share This Page</h3>
+                <button class="modal-close" id="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="qr-section">
+                    <h4>Scan QR Code</h4>
+                    <div id="qr-code" class="qr-code-container"></div>
+                </div>
+                <div class="link-section">
+                    <h4>Copy Link</h4>
+                    <div class="link-input-container">
+                        <input type="text" id="share-link" value="http://nicfosland.com/services.html" readonly>
+                        <button id="copy-button" class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <div id="copy-feedback" class="copy-feedback"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script>
+        // Fallback QR code generation if library fails to load
+        window.addEventListener('load', function() {
+            if (typeof QRCode === 'undefined') {
+                console.warn('QRCode library failed to load, using fallback');
+            }
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
