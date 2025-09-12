@@ -151,7 +151,7 @@ if (shareButton) {
     shareButton.addEventListener('click', () => {
         // Update the share link input with the current page URL
         const currentPage = window.location.pathname;
-        const url = currentPage.includes('services.html') ? 'http://nicfosland.com/services.html' : 'http://nicfosland.com';
+        const url = currentPage.includes('services.html') ? 'https://nicfosland.com/services.html' : 'https://nicfosland.com';
         shareLink.value = url;
         
         shareModal.classList.add('show');
@@ -202,7 +202,7 @@ if (copyButton) {
 function generateQRCode() {
     // Determine the URL based on the current page
     const currentPage = window.location.pathname;
-    const url = currentPage.includes('services.html') ? 'http://nicfosland.com/services.html' : 'http://nicfosland.com';
+    const url = currentPage.includes('services.html') ? 'https://nicfosland.com/services.html' : 'https://nicfosland.com';
     
     // Clear previous QR code
     qrCodeContainer.innerHTML = '';
